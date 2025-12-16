@@ -92,7 +92,7 @@ Par ailleurs, il y a environ le même nombre de faux positifs et de faux négati
     `16271  3323` <br>
     ` 3329  10340`
 
-  * Commentaires / analyses (par rapport résultat expe 1)
+  Nous avons testé avec GridSearch un très grand nombre de combinaisons d'hyperparamètres (**9075** fit réalisés en comptant la cross validation), ne sachant pas de quelle manière restreindre les plages de valeurs des hyperparamètres. Cette recherche a nécessité un temps de calcul conséquent (environ **1h16**) et n'a permi d'améliorer que légèrementles la précision, passant de **77,71%** à **80,0%**.
 
 ### ADABOOST 
 * Processus d'entrainement : 
