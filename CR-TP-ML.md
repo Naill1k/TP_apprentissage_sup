@@ -14,25 +14,25 @@ Donnez la liste des features et ce qu'elles représentent (préciser les éventu
 
 * Résultats (hyper-paramètres par défaut)
 
-|  Evaluation en train | Random Forest |  Adaboost  |  XGBoost   |
+|  Evaluation en train | Random Forest |   XGBoost   |   Adaboost  |
+|----------------------|---------------|-------------|-------------|
+|  Accuracy            |     91.71%    |    79.96%   |    79.22%   |
+|----------------------|---------------|-------------|-------------|
+|  Temps calcul        |     13.97s    |    7.35s    |    3.24s    |
+|----------------------|---------------|-------------|-------------|
+|  Matrice confusion   |   72713  5805 | 65305 13213 | 65587 12931 |
+|                      |   5226  49308 | 13457 41077 | 14713 39821 |
+|----------------------|---------------|-------------|-------------|
+
+|  Evaluation en test  | Random Forest |   XGBoost  |  Adaboost  |
 |----------------------|---------------|------------|------------|
-|  Accuracy            |     77.74%    |   79.73%   |   79.27%   |
+|  Accuracy            |     77.71%    |   79.71%   |   79.23%   |
 |----------------------|---------------|------------|------------|
-|  Temps calcul        |     11.69s    |   13.09s   |   3.97s    |
-|----------------------|---------------|------------|------------|
-|  Matrice confusion   |   16054  3540 | 16276 3318 | 16246 3348 |
-|                      |   3866  9803  | 3423 10246 | 3549 10120 |
+|  Matrice confusion   |   16053  3541 | 16280 3314 | 16388 3206 |
+|                      |   3874  9795  | 3435 10234 | 3703 9966  |
 |----------------------|---------------|------------|------------|
 
-|  Evaluation en test  | Random Forest |  Adaboost  |  XGBoost   |
-|----------------------|---------------|------------|------------|
-|  Accuracy            |     77.74%    |   79.73%   |   79.27%   |
-|----------------------|---------------|------------|------------|
-|  Matrice confusion   |   16054  3540 | 16276 3318 | 16246 3348 |
-|                      |   3866  9803  | 3423 10246 | 3549 10120 |
-|----------------------|---------------|------------|------------|
-
-* Commentaires et Analyse : 
+* Commentaires et Analyse : c bizarre !
 
 
 ## Expérimentation 2 : Comparaison Modèles ML par défaut
@@ -153,4 +153,5 @@ Résultats / Commentaires / Analyses :
 
 ## Explicabilité : contrefactuelle
 Résultats / Commentaires / Analyses : 
+
 
