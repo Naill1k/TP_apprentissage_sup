@@ -98,95 +98,100 @@ Par ailleurs, il y a environ le même nombre de faux positifs et de faux négati
 * Processus d'entrainement : 
   * Recherche des hyperparamètres
    * Listes des hyperparamètres testés et valeurs : 
-    * estimator: [
-            DecisionTreeClassifier(max_depth=1),
-            DecisionTreeClassifier(max_depth=2),
-            DecisionTreeClassifier(max_depth=3),
-            DecisionTreeClassifier(max_depth=4),
-        ]
-    * n_estimators: [50, 100, 200, 400, 800]
-    * learning_rate: [0.005, 0.01, 0.05, 0.1, 0.5, 1.0]
-  * Nombre de plis pour la validation croisée : 5
-  * Nombre total d'entrainement : 600
+    * estimator: `[DecisionTreeClassifier(max_depth=1), DecisionTreeClassifier(max_depth=2), DecisionTreeClassifier(max_depth=3), DecisionTreeClassifier(max_depth=4)]`
+    * n_estimators: `[50, 100, 200, 400, 800]`
+    * learning_rate: `[0.005, 0.01, 0.05, 0.1, 0.5, 1.0]`
+  * Nombre de plis pour la validation croisée : **5**
+  * Nombre total d'entrainement : **600**
+
 * Résultats : 
   * Meilleurs hyperparamètres : 
-    * estimator: DecisionTreeClassifier(max_depth=3)
-    * n_estimators: 800
-    * learning_rate: 0.5
+    * estimator: `DecisionTreeClassifier(max_depth=3)`
+    * n_estimators: `800`
+    * learning_rate: `0.5`
+
   * Performances en entraintement : 
-   * Accuracy : 80.12%
-   * Temps de calcul : 4566s (1h16)
-   * Matrice de Confusion : 
-    65285  13233
-    13215  41319
+   * Accuracy : **80.12%**
+   * Temps de calcul : **4566s (1h16)**
+   * Matrice de Confusion : <br>
+    `65285`  `13233` <br>
+    `13215`  `41319`
+
   * Performance en test : 
-   * Accuracy : 79.84%
-   * Temps de calcul : 4566s (1h16)
-   * Matrice de Confusion : 
-    16270  3324
-    3381  10288
-  * Commentaires / analyses (par rapport résultat expe 1)
+   * Accuracy : **79.84%**
+   * Temps de calcul : **4566s (1h16)**
+   * Matrice de Confusion : <br>
+    `16270`  `3324` <br>
+    `3381`  `10288`
+
+  On a effectué **600** fit ce qui nous a pris environ **1h16** et qui nous a permis de passer seulement de **79.23%** à **79.84%** malgré le temps d'entrainement. On a choisit de prendre des plages de valeurs assez larges pour nos hyperparamètres en profitant du fait que l'on en exploite que 3 sans prendre en compte trop de cas intermédiaires pour autant. Le temps d'exécution du GridSearch est quand même conséquent pour AdaBoost malgré le nombre d'entrainement.
 
 
 ### XGBOOST
 * Processus d'entrainement : 
   * Recherche des hyperparamètres
    * Listes des hyperparamètres testés et valeurs : 
-    * n_estimators: [100, 200, 400]
-    * learning_rate: [0.01, 0.05, 0.1]
-    * max_depth: [2, 3, 4]
-    * min_samples_split: [2, 5, 10]
-    * subsample: [0.6, 0.8, 1.0]
-  * Nombre de plis pour la validation croisée : 5
-  * Nombre total d'entrainement : 1215
+    * n_estimators: `[100, 200, 400]`
+    * learning_rate: `[0.01, 0.05, 0.1]`
+    * max_depth: `[2, 3, 4]`
+    * min_samples_split: `[2, 5, 10]`
+    * subsample: `[0.6, 0.8, 1.0]`
+  * Nombre de plis pour la validation croisée : **5**
+  * Nombre total d'entrainement : **1215**
+
 * Résultats : 
   * Meilleurs hyperparamètres : 
-    * n_estimators: 400
-    * learning_rate: 0.1
-    * max_depth: 4
-    * min_samples_split: 2
-    * subsample: 0.6
+    * n_estimators: `400`
+    * learning_rate: `0.1`
+    * max_depth: `4`
+    * min_samples_split: `2`
+    * subsample: `0.6`
+
   * Performances en entraintement : 
-   * Accuracy : 80.89%
-   * Temps de calcul : 1849s (30min)
-   * Matrice de Confusion : 
-    65546  12972
-    12453  42081
+   * Accuracy : **80.89%**
+   * Temps de calcul : **1849s (30min)**
+   * Matrice de Confusion : <br>
+    `65546`  `12972` <br>
+    `12453`  `42081`
+
   * Performance en test : 
-   * Accuracy : 80.06%
-   * Temps de calcul : 1849s (30min)
-   * Matrice de Confusion : 
-    16215  3379
-    3254  10415
-  * Commentaires / analyses (par rapport résultat expe 1)
+   * Accuracy : **80.06%**
+   * Temps de calcul : **1849s (30min)**
+   * Matrice de Confusion : <br>
+    `16215`  `3379` <br>
+    `3254`  `10415`
+
+  On a effectué **1215** fit ce qui nous a pris environ **30min** et qui nous a permis de passer seulement de **79.79%** à **80.06%** malgré le temps d'entrainement. Nous avons choisit d'utiliser des plages de paramètres assez large pour pouvoir couvrir plusieurs cas mais en utilisant peu de valeurs intermédiaires pour accélérer l'exécution des entrainements en raison du nombre d'hyperparamètres utilisés.
 
 ## Expérimentation 3 : Comparaison des "meilleurs modèles
 
 * Jeux de données utilisé : 
-  * Taille ensemble d'entrainement (nb lignes et nb colonnes) : 
-  * Taille ensemble de test (nb lignes et nb colonnes) : 
+  * Taille ensemble d'entrainement : **133052** lignes et **9** colonnes
+  * Taille ensemble de test : **33263** lignes et **9** colonnes
 
 * Résultats des meilleurs modèles obtenus dans Expe 2
 
-|  Evaluation en train | Random Forest | Adaboost | XGBoost |
-|----------------------|---------------|----------|---------|
-|  accuracy            |               |          |         |
-|----------------------|---------------|----------|---------|
-|  Temps calcul        |               |          |         |
-|----------------------|---------------|----------|---------|
-|  Matrice confusion   |               |          |         |
-|----------------------|---------------|----------|---------|
+|  Evaluation en train | Random Forest |   XGBoost   |   Adaboost  |
+|----------------------|---------------|-------------|-------------|
+|  Accuracy            |     83.04%    |    80.89%   |    80.12%   |
+|----------------------|---------------|-------------|-------------|
+|  Temps calcul        |     4578s     |    1849s    |    4566s    |
+|----------------------|---------------|-------------|-------------|
+|  Matrice confusion   | 67009   11509 | 65546 12972 | 65285 13233 |
+|                      | 11058   43476 | 12453 42081 | 13215 41319 |
+|----------------------|---------------|-------------|-------------|
 
-|   Evaluation en test | Random Forest | Adaboost | XGBoost |
-|----------------------|---------------|----------|---------|
-|  accuracy            |               |          |         |
-|----------------------|---------------|----------|---------|
-|  Temps calcul        |               |          |         |
-|----------------------|---------------|----------|---------|
-|  Matrice confusion   |               |          |         |
-|----------------------|---------------|----------|---------|
+|  Evaluation en test  | Random Forest |   XGBoost   |   Adaboost  |
+|----------------------|---------------|-------------|-------------|
+|  Accuracy            |     80.00%    |    80.06%   |    79.84%   |
+|----------------------|---------------|-------------|-------------|
+|  Matrice confusion   |  16271  3323  | 16215  3379 | 16270  3324 |
+|                      |  3329  10340  | 3254  10415 | 3381  10288 |
+|----------------------|---------------|-------------|-------------|
 
 * Commentaires et Analyse : 
+  On remarque que les 3 modèles ont un niveau d'accuracy très proche sur le jeu de test (seulement quelques dixièmes de pourcentage d'écart). On a une légère amélioration en comparaison au modèle entrainés avec les paramètres par défaut. Cependant le temps d'exécution nécessaire pour obtenir les hyperparamètres plus pertinent est très élevé.
+  On peut considérer dans notre cas que le Gradiet Boosting est le modèle avec la meilleure accuracy mais aussi celui qui a nécessité le moins de temps de calcul. On peut considérer que le temps de calcul pour obtenir le meilleur modèle de Random Forest n'est pas tout a fait pertienent à comparer aux 2 autres car on a fait beaucoup plus d'entrainements cependant le résultat en terme d'accuracy est du même ordre. De plus AdaBoost **600 fit** a été bien plus long à exécuter que le Gradient Boosting **1215** alors que l'on a doublé les nombre d'entrainements.
 
 ## Expérimentation 4 : inférence sur un autre jeu de données (optionnel)
 Résultats / Commentaires / Analyses : 
