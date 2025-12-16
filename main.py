@@ -206,6 +206,45 @@ def evaluate_with_cross_validation(classifier, X_train, y_train, X_test, y_test,
     print()
 
 
+def evaluate_with_gridsearch(classifier, X_train, y_train, X_test, y_test, n_fold=5):
+    t0 = time.perf_counter()
+    param_grid = {
+        "n_estimators": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150],
+        "max_depth": [None, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
+        "min_samples_split": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    }
+    estimator = GridSearchCV(classifier, param_grid=param_grid, cv=n_fold, n_jobs=-1, verbose=3)
+    estimator.fit(X_train, y_train)
+    t1 = time.perf_counter()
+
+    print(f"GridSearchCV {n_fold}-fold pour {classifier.__class__.__name__} en {round(t1 - t0, 3)} seconds:")
+
+    print(f"Best parameter : {estimator.best_params_}")
+
+    # Train set
+    preds = estimator.predict(X_train)
+
+    accuracy = accuracy_score(y_train, preds)
+    mse = mean_squared_error(y_train, preds)
+    matrix = pd.crosstab(y_train.values.ravel(), preds, rownames=['Actual'], colnames=['Predicted'])
+
+    print(f"Accuracy of {estimator.__class__.__name__} on train set: {round(100*accuracy, 2)}% (MSE: {round(mse, 4)})")
+    print(matrix)
+    print()
+    
+
+    # Test set
+    preds = estimator.predict(X_test)
+
+    accuracy = accuracy_score(y_test, preds)
+    mse = mean_squared_error(y_test, preds)
+    matrix = pd.crosstab(y_test.values.ravel(), preds, rownames=['Actual'], colnames=['Predicted'])
+
+    print(f"Accuracy of {estimator.__class__.__name__} on test set: {round(100*accuracy, 2)}% (MSE: {round(mse, 4)})")
+    print(matrix)
+    print()
+
+
 def permutation_feature_importance(model, X_test, y_test, n_repeats=50):
     result = permutation_importance(model, X_test, y_test, n_repeats=n_repeats, n_jobs=-1)
 
@@ -331,7 +370,7 @@ if __name__ == "__main__":
     # for classifier in classifiers:
     #     evaluate_with_cross_validation(classifier, X_train, y_train, X_test, y_test)
     #     model = train_model_default(classifier, X_train, y_train, X_test, y_test)
-
+    #     evaluate_with_gridsearch(RandomForestClassifier(), X_train, y_train, X_test, y_test)
 
     print("\nWith pre-processing:\n")
     X_train = pre_process_features(X_train)
