@@ -4,7 +4,27 @@
 
 ## Jeu de données : pré-traitement
 
-Donnez la liste des features et ce qu'elles représentent (préciser les éventuels changements effectués en pré-traitement ou si pas de changement)
+Le jeu de données utilisé est l'ACSIncome, restreint à l'état de Californie.
+
+Les colonnes du dataset sont :
+* AGEP : âge de la personne (seules les personnes de plus de 16 ans sont dans le dataset)
+* COW : catégorie d'emploi
+* SCHL : niveau d'éducation
+* MAR : statut marital
+* OCCP : code métier (colonne retirée lors du pré-traitement)
+* POBP : pays de naissance (colonne modifiée lors du pré-traitement)
+* RELP : relation avec la personne de référence du ménage (colonne modifiée lors du pré-traitement)
+* WKHP : nombre d'heures travaillées par semaine
+* SEX : sexe de la personne
+* RAC1P : origine ethnique de la personne
+
+Lors du pré-traitement, nous avons décidé de retirer la colonne OCCP correspondant aux codes métiers en raison du trop grand nombre de valeurs différentes.
+
+Nous avons aussi modifé la colonne POBP correspondant au pays de naissance en regroupant par continent. Les valeurs de la colonne POBP correspondent maintenant, par ordre croissant, à l'Europe, l'Asie, l'Amérique du Nord (hors Etats-Unis), les Etats-Unis, l'Amérique latine, l'Afrique, l'Océanie et les pays restants.
+
+Enfin, nous avons simplifié la colonne RELP correspondant à la relation avec la personne de référence du ménage en regroupant les enfants biologiques, adoptés, les beaux enfants, les petits enfants et ceux issus de famille d'accueil en une seule catégorie (2).
+
+Ces 9 features sont utilisées pour prédire si le label PINCP (correspondant au revenu annuel) est supérieur ou inférieur à 50 000$.
 
 ## Expérimentation 1 : Comparaison de modèles par défaut
 

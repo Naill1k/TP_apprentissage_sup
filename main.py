@@ -12,7 +12,7 @@ import os
 import warnings
 
 
-def _pobp_to_continent(code):
+def pobp_to_continent(code):
     c = int(code)
     
     if c in list(range(100, 158)) + [160] + list(range(162, 200)):
@@ -39,7 +39,7 @@ def _pobp_to_continent(code):
     return 8 # Other
 
 
-def _relp_simplify(code):
+def relp_simplify(code):
     c = int(code)
     
     if c in [2, 3, 4, 7, 14]:
@@ -51,9 +51,9 @@ def _relp_simplify(code):
 def pre_process_features(X):
     X.drop(columns=['OCCP'], errors='ignore', inplace=True) # Remove OCCP feature
 
-    X['POBP'] = X['POBP'].apply(_pobp_to_continent)  # Merge countries into continents
+    X['POBP'] = X['POBP'].apply(pobp_to_continent)  # Merge countries into continents
 
-    X['RELP'] = X['RELP'].apply(_relp_simplify)  # Merge children categories
+    X['RELP'] = X['RELP'].apply(relp_simplify)  # Merge children categories
 
     return X
 
@@ -189,7 +189,6 @@ def evaluate_with_cross_validation(classifier, X_train, y_train, X_test, y_test,
 
     print(f"Accuracy of {estimator.__class__.__name__} on train set: {round(100*accuracy, 2)}% (MSE: {round(mse, 4)})")
     print(matrix)
-    ConfusionMatrixDisplay(confusion_matrix=matrix, display_labels=classifier.classes_).plot()
     print()
     
 
@@ -202,7 +201,6 @@ def evaluate_with_cross_validation(classifier, X_train, y_train, X_test, y_test,
 
     print(f"Accuracy of {estimator.__class__.__name__} on test set: {round(100*accuracy, 2)}% (MSE: {round(mse, 4)})")
     print(matrix)
-    ConfusionMatrixDisplay(confusion_matrix=matrix, display_labels=classifier.classes_).plot()
     print()
 
 
@@ -370,7 +368,7 @@ if __name__ == "__main__":
     # for classifier in classifiers:
     #     evaluate_with_cross_validation(classifier, X_train, y_train, X_test, y_test)
     #     model = train_model_default(classifier, X_train, y_train, X_test, y_test)
-    #     evaluate_with_gridsearch(RandomForestClassifier(), X_train, y_train, X_test, y_test)
+
 
     print("\nWith pre-processing:\n")
     X_train = pre_process_features(X_train)
@@ -380,6 +378,8 @@ if __name__ == "__main__":
     for classifier in classifiers:
         evaluate_with_cross_validation(classifier, X_train, y_train, X_test, y_test)
         # model = train_model_default(classifier, X_train, y_train, X_test, y_test)
+        # evaluate_with_gridsearch(RandomForestClassifier(), X_train, y_train, X_test, y_test)
+
 
 
     # explain(model, 10, X_train, X_test, y_train, y_test)
