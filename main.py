@@ -205,6 +205,9 @@ def evaluate_with_cross_validation(classifier, X_train, y_train, X_test, y_test,
 
 
 def evaluate_with_gridsearch(classifier, X_train, y_train, X_test, y_test, n_fold=5):
+    
+    warnings.filterwarnings("ignore", message="A column-vector y was passed when a 1d array was expected.")
+
     t0 = time.perf_counter()
     param_grid = {
         "n_estimators": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150],
@@ -375,12 +378,18 @@ if __name__ == "__main__":
     X_test = pre_process_features(X_test)
 
 
-    for classifier in classifiers:
-        evaluate_with_cross_validation(classifier, X_train, y_train, X_test, y_test)
+    # for classifier in classifiers:
+        # evaluate_with_cross_validation(classifier, X_train, y_train, X_test, y_test)
         # model = train_model_default(classifier, X_train, y_train, X_test, y_test)
         # evaluate_with_gridsearch(RandomForestClassifier(), X_train, y_train, X_test, y_test)
 
 
+    param_grid_rfc = {
+        "n_estimators": [90, 100, 110, 120, 130, 140, 150],
+        "max_depth": [10, 12, 14, 16, 18, 20],
+        "min_samples_split": [8, 9, 10, 11, 12, 13, 14, 15]
+    }
+    evaluate_with_gridsearch(RandomForestClassifier(), param_grid_rfc, X_train, y_train, X_test, y_test)
 
     # explain(model, 10, X_train, X_test, y_train, y_test)
 

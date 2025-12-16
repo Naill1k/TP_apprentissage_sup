@@ -56,26 +56,36 @@ Ces 9 features sont utilisées pour prédire si le label PINCP (correspondant au
 
 
 ## Expérimentation 2 : Comparaison Modèles ML par défaut
-* Jeux de données utilisé : 
-  * Taille ensemble d'entrainement (nb lignes et nb colonnes) : 
-  * Taille ensemble de test (nb lignes et nb colonnes) : 
+* Jeux de données utilisé :  
+  * Taille ensemble d'entrainement (nb lignes et nb colonnes) : 133052 lignes et 9 colonnes
+  * Taille ensemble de test (nb lignes et nb colonnes) : 33263 lignes et 9 colonnes
 
 ### Random Forest (RF)
 * Processus d'entrainement : 
   * Recherche des hyperparamètres
    * Listes des hyperparamètres testés et valeurs : 
-  * Nombre de plis pour la validation croisée : 
-  * Nombre total d'entrainement : 
+    * n_estimators: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150]
+    * max_depth: [None, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20],
+    * min_samples_split: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  * Nombre de plis pour la validation croisée : 5
+  * Nombre total d'entrainement : 9075
 * Résultats : 
   * Meilleurs hyperparamètres : 
+    * max_depth: 14
+    * min_samples_split: 11
+    * n-estimators: 150
   * Performances en entraintement : 
-   * Accuracy : 
-   * Temps de calcul : 
+   * Accuracy : 83,04%
+   * Temps de calcul : 4578,441
    * Matrice de Confusion : 
+    67009  11509
+    11058  43476
   * Performance en test : 
-   * Accuracy : 
-   * Temps de calcul : 
+   * Accuracy : 80,0%
+   * Temps de calcul : 4578,441
    * Matrice de Confusion : 
+    16271  3323
+    3329  10340
   * Commentaires / analyses (par rapport résultat expe 1)
 
 ### ADABOOST 
