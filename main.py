@@ -352,7 +352,7 @@ if __name__ == "__main__":
     df_features = pd.read_csv('2-Dataset/alt_acsincome_ca_features_85.csv', sep=',', encoding='utf-8', header=0)
     df_labels = pd.read_csv('2-Dataset/alt_acsincome_ca_labels_85.csv', sep=',', encoding='utf-8', header=0)
 
-    X_train, X_test, y_train, y_test = train_test_split(df_features, df_labels, test_size=0.9, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(df_features, df_labels, test_size=0.2, random_state=42)
 
     df = pd.concat([df_features, df_labels], axis=1)
 
