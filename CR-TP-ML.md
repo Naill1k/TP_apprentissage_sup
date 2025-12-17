@@ -239,22 +239,31 @@ On remarque qu'à partir de la feature COW, l'importance des features devient tr
 ## Explicabilité : avec LIME et SHAP
 
 * Méthode LIME
-  * Exemple(s) choisi(s) : 27634
+  * Exemple(s) choisi(s) : 4932 (plot/lime/explanation_idx4932.png)
   * Résultats
-               feature    weight
-0          SCHL <= 16.00 -0.233746
-1           RELP <= 0.00  0.094208
-2            POBP > 4.00 -0.080627
-3     1.00 < SEX <= 2.00 -0.074133
-4     1.00 < MAR <= 5.00 -0.039644
-5  32.00 < WKHP <= 40.00  0.035758
-6           RAC1P > 6.00 -0.030582
-7            COW <= 1.00 -0.012774
-8  30.00 < AGEP <= 42.00  0.007757
+                 feature    weight
+0    1.00 < RELP <= 2.00 -0.115436
+1           POBP <= 4.00  0.085403
+2            SEX <= 1.00  0.078005
+3  42.00 < AGEP <= 55.00  0.075710
+4  16.00 < SCHL <= 19.00 -0.073660
+5   1.00 < RAC1P <= 6.00 -0.040634
+6  32.00 < WKHP <= 40.00  0.039521
+7     1.00 < MAR <= 5.00 -0.037421
+8            COW <= 1.00 -0.018505
   * Commentaires / analyses
 * Méthode SHAP
-  * Exemple(s) choisi(s)
+  * Exemple(s) choisi(s) : 4932 (plot/shap/waterfall_idx4932.png)
   * Résultats
+    RELP  -0.79
+    AGEP  +0.52
+    SCHL  -0.47
+    WKHP  +0.45
+    MAR   -0.23
+    POBP  +0.18
+    SEX   +0.17
+    RAC1P +0.06
+    COW   -0.06
   * Commentaires / analyses
 * Comparaison LIME et SHAP
 * Analyse summary-plot de SHAP
