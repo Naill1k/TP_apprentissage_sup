@@ -199,17 +199,17 @@ Résultats / Commentaires / Analyses :
 ## Expérimentation 5 : impact de la taille du jeu de données
 Résultats / Commentaires / Analyses : 
 
-|  Evaluation train/test  |    0.1    |    0.2    |    0.3    |    0.4    |    0.5    |    0.6    |    0.7    |    0.8    |    0.9    |
-|-------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| Evaluation (test/total)||    0.1    |    0.2    |    0.3    |    0.4    |    0.5    |    0.6    |    0.7    |    0.8    |    0.9    |
+|---------------|---------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
 | Random Forest | train   |  82.54%   |  82.72%   |  82.80%   |  82.94%   |  83.15%   |  83.38%   |  83.83%   |  84.42%   |  85.45%   |
 |   Accuracy    | test    |  79.97%   |  79.94%   |  80.06%   |  80.05%   |  80.10%   |  79.92%   |  79.80%   |  79.65%   |  79.29%   |
-|-------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|               |         |           |           |           |           |           |           |           |           |           |
 |   AdaBoost    | train   |  80.16%   |  80.10%   |  79.98%   |  79.92%   |  79.88%   |  79.74%   |  79.83%   |  79.64%   |  79.70%   |
 |   Accuracy    | test    |  80.19%   |  80.00%   |  79.85%   |  80.10%   |  80.06%   |  80.09%   |  79.85%   |  79.67%   |  79.58%   |
-|-------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|               |         |           |           |           |           |           |           |           |           |           |
 |    XGBoost    | train   |  80.77%   |  80.86%   |  80.82%   |  80.92%   |  80.94%   |  81.05%   |  81.34%   |  81.94%   |  83.06%   |
 |   Accuracy    | test    |  80.11%   |  80.05%   |  80.19%   |  80.28%   |  80.21%   |  80.19%   |  79.99%   |  79.75%   |  79.32%   |
-|-------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|               |         |           |           |           |           |           |           |           |           |           |
 
 ## Modèle choisi pour la suite : 
 * quel modèle : On choisit le modèle GradientBoosting avec les hyperparamètre optimaux que l'on a récupéré avec la méthode GridSearch. 
@@ -220,16 +220,19 @@ Résultats / Commentaires / Analyses :
 * Explication de la méthode : pour chacune des colonnes, on mélange aléatoirement les valeurs des différentes lignes. On compare ensuite la précision obtenue avant et après mélange. Plus la précision diminue, plus la feature est importante, car utiliser la mauvaise valeur aura eu un gros impact sur la prédiction. Inversement, si utiliser une valeur aléatoire n'a que très peu d'impact sur la prédiction, cela signifie que la feature n'est pas importante.
 
 * Résultats obtenus : 
-  Feature  Importance Mean  Importance Std
-2    SCHL         0.088920        0.001626
-6    WKHP         0.080542        0.001388
-0    AGEP         0.041883        0.001552
-5    RELP         0.025041        0.001122
-1     COW         0.009148        0.000893
-7     SEX         0.008330        0.000915
-4    POBP         0.007689        0.000846
-3     MAR         0.003458        0.000656
-8   RAC1P         0.003446        0.000703
+
+|  Feature | Importance Mean | Importance Std |
+|----------|-----------------|----------------|
+|   SCHL   |    0.088920     |    0.001626    |
+|   WKHP   |    0.080542     |    0.001388    |
+|   AGEP   |    0.041883     |    0.001552    |
+|   RELP   |    0.025041     |    0.001122    |
+|    COW   |    0.009148     |    0.000893    |
+|    SEX   |    0.008330     |    0.000915    |
+|   POBP   |    0.007689     |    0.000846    |
+|    MAR   |    0.003458     |    0.000656    |
+|  RAC1P   |    0.003446     |    0.000703    |
+|          |                 |                |
 
 * Analyses :
 
