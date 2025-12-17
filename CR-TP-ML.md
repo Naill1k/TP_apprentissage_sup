@@ -277,10 +277,29 @@ Cela est cohérent avec le fait que le niveau d'éducation et le nombre d'heures
   | COW     | -0.06  |
   |         |        |
 
-  * Commentaires / analyses : 
-   On remarque que les features les plus importantes selon SHAP sont RELP, AGEP, SCHL et WKHP. MAR, POBP et SEX ont une importance modérée, tandis que RAC1P et COW ont une importance faible.
-* Comparaison LIME et SHAP
-* Analyse summary-plot de SHAP
+  On remarque que les features les plus importantes selon SHAP sont RELP, AGEP, SCHL et WKHP. MAR, POBP et SEX ont une importance modérée, tandis que RAC1P et COW ont une importance faible.
+
+* Comparaison LIME et SHAP : <br>
+On remarque que les deux méthodes d'explicabilité donnent des résultats similaires sur la plupart des exemples testés. Les features RELP, AGEP, SCHL et WKHP sont identifiées comme les plus importantes par les deux méthodes. Cependant, il y a quelques différences dans l'importance relative des autres features. Par exemple, LIME attribue une importance modérée à POBP et SEX, tandis que SHAP les considère comme ayant une importance plus faible. <br>
+Globalement, les deux méthodes fournissent des insights similaires sur les facteurs influençant la prédiction du modèle, ce qui renforce la confiance dans les résultats obtenus.
+
+* Analyse summary-plot de SHAP : <br>
+
+  | Feature | Importance |
+  |---------|------------|
+  | WKHP    |    0.88    |
+  | SCHL    |    0.82    |
+  | AGEP    |    0.65    |
+  | RELP    |    0.43    |
+  | SEX     |    0.26    |
+  | POBP    |    0.23    |
+  | MAR     |    0.14    |
+  | COW     |    0.11    |
+  | RAC1P   |    0.08    |
+  |         |            |
+
+On constate que l'importance des features selon SHAP est cohérente avec les résultats obtenus précédemment avec la méthode de permutation feature importance. <br>
+Les features WKHP et SCHL, AGEP et RELP sont les plus importantes, tandis que les autres ont un impact beaucoup moins important. Cependant, les écarts entre les importances des features sont beaucoup moins marquées avec SHAP.
 
 ## Explicabilité : contrefactuelle
 Résultats / Commentaires / Analyses : 

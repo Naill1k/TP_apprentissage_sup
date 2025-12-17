@@ -420,6 +420,26 @@ if __name__ == "__main__":
     # evaluate_with_cross_validation(AdaBoostClassifier(estimator=DecisionTreeClassifier(max_depth=3), n_estimators=800, learning_rate=0.5), X_train, y_train, X_test, y_test)
     model = evaluate_with_cross_validation(GradientBoostingClassifier(n_estimators=400, learning_rate=0.1, max_depth=4, min_samples_split=2, subsample=0.6), X_train, y_train, X_test, y_test)
 
-    explain(model, 10, X_train, X_test, y_train, y_test)
+    # explain(model, 10, X_train, X_test, y_train, y_test)
+
+    # 3.34 Explicabilité : contrefactuelle
+
+    example_row = df.iloc[27634].copy()
+
+    print("Ligne 27634:")
+    print(example_row)
+
+    example_row_modified = example_row.copy()
+    example_row_modified['SCHL'] = 24
+
+    # Préparer la ligne modifiée pour la prédiction (extraire les features et appliquer le pré-traitement)
+    X_example = pd.DataFrame([example_row_modified]) 
+
+    # Faire la prédiction
+    prediction = model.predict(X_example)
+    prediction_proba = model.predict_proba(X_example)
+
+    print(f"\nPrédiction: {prediction[0]}")
+    print(f"Probabilités: {prediction_proba[0]}")
 
     
