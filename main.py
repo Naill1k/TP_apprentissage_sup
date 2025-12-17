@@ -289,6 +289,8 @@ def visualize_lime_explanations(model, X_train, X_test, y_train, examples):
  
         df_explanation = pd.DataFrame({'feature': [t[0] for t in explanation], 'weight': [t[1] for t in explanation]})
 
+        print(df_explanation)
+
         _, ax = plt.subplots(figsize=(8, max(3, 0.4 * len(df_explanation))))
         colors = ['green' if v > 0 else 'red' for v in df_explanation['weight']]
 
@@ -311,6 +313,8 @@ def visualize_shap_explanations(model, X_train, X_test, examples):
     subset = X_test.iloc[examples]
     shap_values = explainer(subset)
 
+    print(shap_values)
+    
     print('\nSHAP explanation:\n')
 
     # Summary plot 
