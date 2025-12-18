@@ -360,8 +360,8 @@ if __name__ == "__main__":
 
     X_train, X_test, y_train, y_test = train_test_split(df_features, df_labels, test_size=0.2, random_state=42)
 
-    X_test = pd.read_csv('data_sup/features_split_4.csv', sep=',', encoding='utf-8', header=0)
-    y_test = pd.read_csv('data_sup/labels_split_4.csv', sep=',', encoding='utf-8', header=0)
+    # X_test = pd.read_csv('data_sup/features_split_4.csv', sep=',', encoding='utf-8', header=0)
+    # y_test = pd.read_csv('data_sup/labels_split_4.csv', sep=',', encoding='utf-8', header=0)
 
     df = pd.concat([df_features, df_labels], axis=1)
 
