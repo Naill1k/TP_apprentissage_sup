@@ -2,6 +2,8 @@
 #  Binome : ALINOT Killian / SIRI Baptiste
 # #######################################################################
 
+Lien du git : https://github.com/Naill1k/TP_supervised_learning
+
 ## Jeu de données : pré-traitement
 
 Le jeu de données utilisé est l'ACSIncome, restreint à l'état de Californie.
