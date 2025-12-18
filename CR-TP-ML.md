@@ -320,14 +320,14 @@ Résultats / Commentaires / Analyses :
 
   On obtient les probabilités suivantes :
 
-    Prédiction: 0
-    Probabilités: [0.93832707 0.06167293]
+    Prédiction: FALSE
+    Probabilités: 94%
 
   On change la valeur du champ **SCHL** de **3** à **24** (niveau d'éducation plus élevé) pour essayer de changer la prédiction.<br>
   On obtient les probabilités suivantes :
 
-    Prédiction: 0
-    Probabilités: [0.77198225 0.22801775]
+    Prédiction: FALSE
+    Probabilités: 77%
   
   Malgré l'augmentation du niveau d'éducation, la prédiction reste inchangée (revenu inférieur à 50 000$). Cela suggère que l'impact d'un seul facteur peut ne pas être suffisant pour modifier la prédiction du modèle. D'autres facteurs, tels que l'âge, le nombre d'heures travaillées par semaine, et la relation familiale, peuvent également jouer un rôle crucial dans la détermination du revenu annuel. <br>
 
@@ -335,8 +335,8 @@ Résultats / Commentaires / Analyses :
   On passe donc **AGEP** de **25** à **50** ans en plus de **SCHL** de **3** à **24**.<br>
   On obtient les probabilités suivantes :
 
-    Prédiction: 1
-    Probabilités: [0.27958153 0.72041847]
+    Prédiction: TRUE
+    Probabilités: 72%
   
   Cette fois, la prédiction change bien pour indiquer un revenu supérieur à 50 000$. Cela illustre l'importance de considérer plusieurs facteurs ensemble pour influencer la prédiction du modèle.
 
