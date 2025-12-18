@@ -354,7 +354,7 @@ def explain(model, n_examples, X_train, X_test, y_train, y_test):
     visualize_shap_explanations(model, X_train, X_test, examples)  # Only works with GradientBoosting
 
 
-def analyse_contrefactuelle(X):
+def analyse_contrefactuelle(X, model):
     print("\nCounterfactual analysis :")
 
     example_row = X.iloc[0].copy()
@@ -396,6 +396,9 @@ if __name__ == "__main__":
     df_labels = pd.read_csv('2-Dataset/alt_acsincome_ca_labels_85.csv', sep=',', encoding='utf-8', header=0)
 
     X_train, X_test, y_train, y_test = train_test_split(df_features, df_labels, test_size=0.2, random_state=42)
+
+    # X_test = pd.read_csv('data_sup/features_split_4.csv', sep=',', encoding='utf-8', header=0)
+    # y_test = pd.read_csv('data_sup/labels_split_4.csv', sep=',', encoding='utf-8', header=0)
 
     df = pd.concat([df_features, df_labels], axis=1)
 
@@ -457,9 +460,11 @@ if __name__ == "__main__":
     # evaluate_with_cross_validation(AdaBoostClassifier(estimator=DecisionTreeClassifier(max_depth=3), n_estimators=800, learning_rate=0.5), X_train, y_train, X_test, y_test)
     model = evaluate_with_cross_validation(GradientBoostingClassifier(n_estimators=400, learning_rate=0.1, max_depth=4, min_samples_split=2, subsample=0.6), X_train, y_train, X_test, y_test)
 
+
+
     # explain(model, 10, X_train, X_test, y_train, y_test)
 
-    analyse_contrefactuelle(X_train)
+    analyse_contrefactuelle(X_train, model)
 
 
 
